@@ -5,8 +5,9 @@ const { v4: uuidv4 } = require('uuid');
 const Schema = mongoose.Schema;
 
 const subSchema = new mongoose.Schema({
-    date: Date,
-    numberOfTickets: Number
+    date: {type: Date},
+    numberOfTickets: {type: Number},
+    seats: {type: Object}
 });
 
 const userModel = new Schema({
@@ -18,7 +19,8 @@ const userModel = new Schema({
     age: {type: Number},
     ticketsBooked: {type: Number},
     ticketsDetails: [subSchema],
-    status: {type:String}
+    status: {type:String},
+    seats: {type:Object}
   }, { timestamps: true, versionKey: false });
 
 module.exports = {

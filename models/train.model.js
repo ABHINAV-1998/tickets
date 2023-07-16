@@ -21,7 +21,8 @@ const trainTicketsModel = new Schema({
     seatRowWise: {type: Array, default: array },
     ticketsBooked: {type: Number, default: 0},
     status: {type:String, default: "AVAILABLE"},//available, full
-    findField: {type:String, default: "TICKETS"}
+    findField: {type:String, default: "TICKETS"},// change to coach: SLEEPER
+    currentRow: {type: Number, default: 0}
   }, { timestamps: true, versionKey: false });
 
 module.exports = {

@@ -12,8 +12,13 @@ router.get('/available-seats', async function(req, res) {
 });
 
 router.post('/book-ticket', async function (req, res) {
-    console.log("----here---")
-    const resp = await ticket.bookTicket(req)
+    const resp = await ticket.bookTicket(req.body)
+    console.log("----here---", resp)
+    if(resp?.coach && resp?.user)
+        res.status(200).json(resp);
+    else 
+        res.status(400).json(resp);
+
 });
 
 router.get('/users-booked-ticket/:emailId', async function(req, res) {

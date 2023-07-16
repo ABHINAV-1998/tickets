@@ -10,7 +10,8 @@ const router = require('./routes')
 const app = express();
 const PORT = 3000;
 require('dotenv').config();
-const mongoUrl = process.env.MONGOURL;
+const mongoUrl = "mongodb+srv://abhinaviitbhilai:tU7x3j7tejBnTyqT@cluster0.etvfl8h.mongodb.net/ticket-booking?retryWrites=true&w=majority";
+// const mongoUrl = process.env.LOCAL;
 
 async function init() {
     await connectToMongoDb();
@@ -20,21 +21,15 @@ async function init() {
 
 async function connectToMongoDb() {
     try {
-        const client = await mongoose.connect(mongoUrl, { 
+        await mongoose.connect(mongoUrl, { 
             useUnifiedTopology: true,
             useNewUrlParser: true
         })
         console.log("connected to db...")
-        const data = await trainTicketsModel.find({});
-
-        console.log("-----data---", data);
-        if (data && data.length === 0) {
-            console.log("------hiii----", ticket)
-            try {
-                await ticket.createDefault();
-            } catch (err) {
-                console.log(err)
-            }
+        try {
+            await ticket.createDefault();
+        } catch (err) {
+            console.log(err)
         }
     } catch (err) {
         console.log("mongo not connected")
