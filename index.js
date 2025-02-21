@@ -10,7 +10,7 @@ const router = require('./routes')
 const app = express();
 const PORT = 3000;
 require('dotenv').config();
-const mongoUrl = "mongodb+srv://abhinaviitbhilai:tU7x3j7tejBnTyqT@cluster0.etvfl8h.mongodb.net/ticket-booking?retryWrites=true&w=majority";
+const mongoUrl = "mongodb+srv://mongouser:password.mongodb.net/ticket-booking?retryWrites=true&w=majority";
 // const mongoUrl = process.env.LOCAL;
 
 async function init() {
